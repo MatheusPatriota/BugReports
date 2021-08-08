@@ -1,7 +1,6 @@
 import useAuth from '../../hooks/useAuth';
 import Head from 'next/head';
 import { Report } from '../../components/Report';
-import { FormReport } from '../../components/FormReport';
 import TopBar from '../../components/TopBar';
 import { RoomStyle } from '../../styles/room';
 import { useEffect } from 'react';
