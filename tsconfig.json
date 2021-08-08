@@ -14,6 +14,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "context/AuthContex.jsx", "pages/_app.jsx", "components/Layout/index.jsx", "components/AuthModal/index.jsx", "pages/index.jsx", "pages/admin/index.jsx", "components/Report/index.jsx", "components/FormReport/index.jsx"],
   "exclude": ["node_modules"]
 }
