@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
     } else {
       
       cookie.remove('user-auth');
-      Router.push('/')
+      Router.push('./')
     }
   };
 
@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
         .signInWithPopup(provider)
         .then((response) => {
           handleUser(response.user);
-          Router.push('/room-code');
+          Router.push('./room-code');
         })
         .catch((error) => {
           console.log(error);
@@ -73,7 +73,7 @@ export function AuthProvider({ children }) {
         .signInWithEmailAndPassword(email, password)
         .then((response) => {
           handleUser(response.user);
-          Router.push('/admin/room');
+          Router.push('./admin/room');
         })
         .catch((error) => {
           console.log(error);
@@ -91,7 +91,7 @@ export function AuthProvider({ children }) {
       .then(() => {
         setUser(false);
         setSession(false);
-        Router.push('/');
+        Router.push('./');
         });
     } finally {
       setLoading(false);
