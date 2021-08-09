@@ -69,7 +69,6 @@ export default function AdminLoginPage() {
                   name="password"
                   value={password}
                   onChange={(event) => {
-                    console.log(event.target.value);
                     setPassword(event.target.value);
                   }}
                   className="inputSenha"

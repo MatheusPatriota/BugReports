@@ -19,7 +19,6 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   const handleUser = async (currentUser) => {
-    console.log(currentUser);
     if (currentUser) {
       const formatedUser = await formatUser(currentUser);
       setUser(formatedUser);

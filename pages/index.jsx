@@ -7,7 +7,6 @@ import {GeneralPagesConfig} from '../styles/generalPagesConfig';
 import ToggleTheme from '../components/ToggleTheme';
 function Home({ openAuthModal }) {
   const { user, signinWithGoogle } = useAuth();
-  console.log('user', user);
   return (
     <GeneralPagesConfig>
       <Flex position="absolute" mt={16} ml={16}>

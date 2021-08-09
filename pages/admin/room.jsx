@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 
 export default function Room() {
   const { user } = useAuth();
-  // console.log("user", user);
 
   useEffect(() => {
     if (user) {

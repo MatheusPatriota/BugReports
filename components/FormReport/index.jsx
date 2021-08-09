@@ -7,12 +7,12 @@ import firebase from '../../lib/firebase';
 import { useRouter } from 'next/router';
 
 export function FormReport(props) {
-  console.log(props.roomTitle);
+  
   const [reportTitle, setReportTitle] = useState();
   const [reportText, setReportText] = useState();
   const { user } = useAuth();
   const router = useRouter();
-  const { pid } = router.query;
+  const { uid } = router.query;
 
   async function handleSendNewReport(event) {
     event.preventDefault();
@@ -24,20 +24,19 @@ export function FormReport(props) {
       alert('Titulo Não pode ser vazio')
       return;
     }
-
     const report = {
+      title: reportTitle,
       content: reportText,
       author: {
         name: user.name,
-        avatar: user.avatar,
       },
       isSolved: false,
-      underInvestigation: false,
+      underInvestigation: false, 
     };
+    await firebase.database().ref(`rooms/${uid}/reports`).push(report);
 
-    await firebase.database().ref(`rooms/${pid}/reports`).push(report);
-
-    setReportText('');
+    setReportText();
+    setReportTitle();
   }
 
   return (
@@ -47,7 +46,7 @@ export function FormReport(props) {
           <h1>{props.roomTitle}</h1>
           <span>({props.qtdPerguntas}) Ocorrência(s)</span>
         </div>
-        <form onsSubmit={handleSendNewReport}>
+        <form onSubmit={handleSendNewReport}>
           <input
             type="text"
             placeholder="Titulo da Ocorrência"

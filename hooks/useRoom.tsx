@@ -6,7 +6,7 @@ type ReportType = {
   id: string;
   author: {
     name: string;
-    avatar: string;
+    photoUrl?: string;
   };
   title:string;
   content: string;
@@ -19,7 +19,6 @@ type FirebaseReports = Record<
   {
     author: {
       name: string;
-      avatar: string;
     };
     title:string;
     content: string;
@@ -30,7 +29,7 @@ type FirebaseReports = Record<
 
 export function useRoom(roomId: string) {
   const { user } = useAuth();
-  const [Reports, setReports] = useState<ReportType[]>([]);
+  const [reports, setReports] = useState<ReportType[]>([]);
   const [title, setTitle] = useState("");
 
   useEffect(() => {
@@ -38,7 +37,7 @@ export function useRoom(roomId: string) {
 
     roomRef.on("value", (room) => {
       const databaseRoom = room.val();
-      const firebaseReports: FirebaseReports = databaseRoom.Reports ?? {};
+      const firebaseReports: FirebaseReports = databaseRoom.reports ?? {};
       const parsedReports = Object.entries(firebaseReports).map(
         ([key, value]) => {
           return {
@@ -60,5 +59,5 @@ export function useRoom(roomId: string) {
     };
   }, [roomId, user?.id]);
 
-  return { Reports, title };
+  return { reports, title };
 }
