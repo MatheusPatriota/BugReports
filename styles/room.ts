@@ -8,16 +8,22 @@ export const RoomStyle = styled.div`
   justify-content: center;
   padding: 16px;
 
-  input{
+  input {
     color: #000;
     ::placeholder {
       color: #000;
     }
   }
 
-  textarea{
+  textarea {
     ::placeholder {
       color: #000;
     }
   }
+
+  .btnEntrarSalaAdmin {
+    background: #0066e8;
+    color: #fff;
+  }
+
 `;

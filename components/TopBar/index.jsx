@@ -8,11 +8,14 @@ import {
 } from '@chakra-ui/react';
 import { RoomCode } from '../RoomCode';
 import ToggleTheme from '../ToggleTheme';
+import {useRouter} from 'next/router';
 
-function TopBar() {
+function TopBar(props) {
   const bg = useColorModeValue('#FFFFFF', '#1A202C');
   const color = useColorModeValue('#1A202C', '#EDEEEE');
   const borderColor = useColorModeValue('#DDD', '#27272A');
+  const router = useRouter();
+  const {uid} = router.query;
   return (
     <Flex
       w={'full'}
@@ -33,8 +36,6 @@ function TopBar() {
       >
         <Box>
           <Image
-            // boxSize="40px"
-            // objectFit="cover"
             w={'150px'}
             src="/logo.png"
             alt="BugReports"
@@ -43,8 +44,11 @@ function TopBar() {
         </Box>
         <Box justifyContent="space-between">
           <Flex alignItems="center" justifyContent="space-between" w="full">
+            <Box mr={'8px'} >
+              {props.children}
+            </Box>
             <Box>
-              <RoomCode code={'1234'} />
+              <RoomCode code={uid} />
             </Box>
             <Box ml={'5'}>
               <ToggleTheme />

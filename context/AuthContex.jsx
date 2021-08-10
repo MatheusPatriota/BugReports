@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
     } else {
       
       cookie.remove('user-auth');
-      Router.push('./')
+      // Router.push('./')
     }
   };
 

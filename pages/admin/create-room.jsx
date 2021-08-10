@@ -20,18 +20,28 @@ export default function NewRoom() {
 
     const roomRef = firebase.database().ref('rooms');
 
-    const firebaseRoom = await roomRef.push({
-      title: newRoom,
-      authorEmail: user.email,
-      authorId: user?.uid,
-    }).then((response) => {
-      swal("Sala Criada com Sucesso!", "voltar para sala de administração", "success");
-    }).catch((error) => {
-      swal("Sala Criada com Sucesso!", "voltar para sala de administração", "error");
+    const firebaseRoom = await roomRef
+      .push({
+        title: newRoom,
+        authorEmail: user.email,
+        authorId: user?.uid,
+      })
+      .then((response) => {
+        swal(
+          'Sala Criada com Sucesso!',
+          'voltar para sala de administração',
+          'success',
+        );
+      })
+      .catch((error) => {
+        swal(
+          'Sala Criada com Sucesso!',
+          'voltar para sala de administração',
+          'error',
+        );
+      });
 
-    });
-
-    router.push(`./room`);
+    router.push(`./dashboard`);
   }
 
   return (
