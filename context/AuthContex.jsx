@@ -72,7 +72,7 @@ export function AuthProvider({ children }) {
         .signInWithEmailAndPassword(email, password)
         .then((response) => {
           handleUser(response.user);
-          Router.push('./admin/room');
+          Router.push('./admin/dashboard');
         })
         .catch((error) => {
           console.log(error);
