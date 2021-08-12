@@ -6,20 +6,35 @@ import { RoomStyle } from '../../../styles/room';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Button } from '@chakra-ui/button';
-import { BsCheckAll } from 'react-icons/bs';
+import { BsCheckAll, BsTrash } from 'react-icons/bs';
 import { Box, Flex } from '@chakra-ui/layout';
 import {
   AiOutlineCheckCircle,
   AiFillCheckCircle,
   AiOutlineSearch,
 } from 'react-icons/ai';
-
+import firebase from '../../../lib/firebase';
 export default function Room() {
   const { user } = useAuth();
   const router = useRouter();
   //pid is the uid
   const { uid } = router.query;
   const { reports } = useRoom(uid);
+  
+  async function handleStatusToUnderInvestigation(reportId) {
+    console.log('marcado como em investigacao');
+    await firebase.database().ref(`rooms/${uid}/reports/${reportId}`).update({
+      underInvestigation: true,
+    });
+  }
+  async function handleStatusToSolved(reportId) {
+    await firebase.database().ref(`rooms/${uid}/reports/${reportId}`).update({
+      isSolved: true,
+    });
+  }
+  async function handleRemoveReport(reportId) {
+    await firebase.database().ref(`rooms/${uid}/reports/${reportId}`).remove();
+  }
 
   return (
     <div>
@@ -41,17 +56,23 @@ export default function Room() {
                     title={report.title}
                     content={report.content}
                     author={report.author}
-                    isAnswered={report.isAnswered}
-                    isHighlighted={report.isHighlighted}
+                    isUnderInvestigation={report.underInvestigation}
+                    isSolved={report.isSolved}
                   >
                     <Box>
                       <Flex className="BoxFooterIcons">
                         <button
                           type="button"
+                          aria-label="Excluir Ocorrência"
+                          onClick={() => handleRemoveReport(report.id)}
+                          title="Excluir Ocorrência"
+                        >
+                          <BsTrash />
+                        </button>
+                        <button
+                          type="button"
                           aria-label="Marcar como concluido"
-                          onClick={() =>
-                            handleSendLikereport(report.id, report.likeId)
-                          }
+                          onClick={() => handleStatusToSolved(report.id)}
                           title="Marcar como concluido"
                         >
                           <AiOutlineCheckCircle />
@@ -60,7 +81,7 @@ export default function Room() {
                           type="button"
                           aria-label="Marcar como Em Investigação"
                           onClick={() =>
-                            handleSendLikereport(report.id, report.likeId)
+                            handleStatusToUnderInvestigation(report.id)
                           }
                           title="Marcar como Em Investigação"
                         >

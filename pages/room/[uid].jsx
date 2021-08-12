@@ -49,24 +49,24 @@ export default function Room() {
                     title={report.title}
                     content={report.content}
                     author={report.author}
-                    isAnswered={report.isAnswered}
-                    isHighlighted={report.isHighlighted}
+                    isUnderInvestigation={report.underInvestigation}
+                    isSolved={report.isSolved}
                   >
-                      <Flex className="BoxFooterIcons">
-                        {!report.underInvestigation && !report.isSolved ? (
-                          <span className="ocorrenciaRecebida">
-                            <BsCheckAll /> Recebido
-                          </span>
-                        ) : report.underInvestigation ? (
-                          <span>
-                            <AiOutlineSearch /> Em Investigação
-                          </span>
-                        ) : (
-                          <span>
-                            <AiOutlineCheckCircle /> Ocorrência Concluída
-                          </span>
-                        )}
-                      </Flex>
+                    <Flex className="BoxFooterIcons">
+                      {!report.underInvestigation && !report.isSolved ? (
+                        <span className="ocorrenciaRecebida">
+                          <BsCheckAll /> Recebido
+                        </span>
+                      ) : report.isSolved ? (
+                        <span>
+                          <AiOutlineCheckCircle /> Ocorrência Concluída
+                        </span>
+                      ) : (
+                        <span>
+                          <AiOutlineSearch /> Em Investigação
+                        </span>
+                      )}
+                    </Flex>
                   </Report>
                 );
               })}
