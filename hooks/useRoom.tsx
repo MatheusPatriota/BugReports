@@ -12,6 +12,7 @@ type ReportType = {
   content: string;
   isSolved: boolean;
   underInvestigation: boolean;
+  registerDate: string;
 };
 
 type FirebaseReports = Record<
@@ -24,6 +25,7 @@ type FirebaseReports = Record<
     content: string;
     isSolved: boolean;
     underInvestigation: boolean;
+    registerDate: string;
   }
 >;
 
@@ -64,6 +66,7 @@ export function useRoom(roomId?: string) {
               author: value.author,
               underInvestigation: value.underInvestigation,
               isSolved: value.isSolved,
+              registerDate: value.registerDate,
             };
           },
         );

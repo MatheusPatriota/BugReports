@@ -15,7 +15,10 @@ export function FormReport(props) {
   const { uid } = router.query;
 
   async function handleSendNewReport(event) {
+    //gerando o timestamp da data atual
+    let currentData = new Date().getTime()/1000;
     event.preventDefault();
+
     if (reportText.trim() === '') {
       alert('Descrição Não pode ser vazia')
       return;
@@ -31,7 +34,9 @@ export function FormReport(props) {
         name: user.name,
       },
       isSolved: false,
-      underInvestigation: false, 
+      //data é armazenada em timestamp
+      registerDate: currentData.toString(),
+      underInvestigation: false,
     };
     await firebase.database().ref(`rooms/${uid}/reports`).push(report);
 

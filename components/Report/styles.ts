@@ -77,5 +77,29 @@ export const ReportStyles = styled.div`
         filter: brightness(0.7);
       }
     }
+
+    .BoxFooterIcons{
+      button{
+        color: rgba(3,3,3,1);
+        font-size: 22px;
+        padding: 10px;
+      }
+      
+      span{
+        svg{
+          margin-top: 4px;
+        }
+        display: flex;
+        color: rgba(3,3,3,1);
+        font-size: 18px;
+        padding: 10px;
+        gap: 8px;
+      }
+      .ocorrenciaRecebida{
+        color: #0066e8;
+        cursor: default;
+        
+      }
+    }
   }
 `;
