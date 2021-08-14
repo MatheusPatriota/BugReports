@@ -8,7 +8,6 @@ export const GeneralPagesConfig = styled.div`
   main {
     @media (max-width: 950px) {
       width: 100vw;
-      position: absolute;
       align-items: center;
       height: 100vh;
       justify-content: center;

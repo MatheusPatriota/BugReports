@@ -7,7 +7,6 @@ import firebase from '../../lib/firebase';
 import { useRouter } from 'next/router';
 
 export function FormReport(props) {
-  
   const [reportTitle, setReportTitle] = useState();
   const [reportText, setReportText] = useState();
   const { user } = useAuth();
@@ -16,15 +15,15 @@ export function FormReport(props) {
 
   async function handleSendNewReport(event) {
     //gerando o timestamp da data atual
-    let currentData = new Date().getTime()/1000;
+    let currentData = new Date().getTime() / 1000;
     event.preventDefault();
 
     if (reportText.trim() === '') {
-      alert('Descrição Não pode ser vazia')
+      alert('Descrição Não pode ser vazia');
       return;
     }
     if (reportTitle.trim() === '') {
-      alert('Titulo Não pode ser vazio')
+      alert('Titulo Não pode ser vazio');
       return;
     }
     const report = {
@@ -68,16 +67,16 @@ export function FormReport(props) {
             }}
           />
           <div className="formFooter">
-            <Button className="btnVideo">Anexar seu Vídeo</Button>
+            {/* <Button className="btnVideo">Anexar seu Vídeo</Button> */}
             <div className="userInfo">
               <div className="containerIcone">
                 <BiUser className="icon" />
               </div>
               <span>Matheus Patriota</span>
             </div>
-          </div>
-          <div className="btnSend">
-            <Button type="submit">Enviar Ocorrência</Button>
+            <div className="btnSend">
+              <Button type="submit">Enviar Ocorrência</Button>
+            </div>
           </div>
         </form>
       </div>

@@ -37,7 +37,6 @@ export default function Room() {
       </Head>
       <TopBar />
       <main>
-        {/* {user ? user.name : 'User'} */}
         <RoomStyle>
           <FormReport roomTitle={title} qtdPerguntas={reports.length || 0} />
           {reports ? (
