@@ -12,7 +12,8 @@ export function FormReport(props) {
   const { user } = useAuth();
   const router = useRouter();
   const { uid } = router.query;
-
+  // console.log('usuario pagina de from',user, uid)
+  // console.log(props.avatar)
   async function handleSendNewReport(event) {
     //gerando o timestamp da data atual
     let currentData = new Date().getTime() / 1000;
@@ -70,9 +71,13 @@ export function FormReport(props) {
             {/* <Button className="btnVideo">Anexar seu Vídeo</Button> */}
             <div className="userInfo">
               <div className="containerIcone">
-                <BiUser className="icon" />
+                {props.avatar ? (
+                  <img src={props.avatar} alt="icone autor"  className="icon"/>
+                ) : (
+                  <BiUser className="icon" />
+                )}
               </div>
-              <span>Matheus Patriota</span>
+              <span>{props.name}</span>
             </div>
             <div className="btnSend">
               <Button type="submit">Enviar Ocorrência</Button>

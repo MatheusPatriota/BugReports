@@ -23,7 +23,6 @@ export default function AdminLoginPage() {
 
   const handleSigninEmailAndPassword = (event) => {
     event.preventDefault();
-    console.log(email);
     signinWithEmailAndpassword(email, password);
   };
 
@@ -51,7 +50,6 @@ export default function AdminLoginPage() {
                   reference="email"
                   mt={'8px'}
                   onChange={(event) => {
-                    console.log(event.target.value);
                     setEmail(event.target.value);
                   }}
                 />
@@ -63,6 +61,7 @@ export default function AdminLoginPage() {
                 key="password"
               >
                 <Input
+                  required
                   pr="4.5rem"
                   type={show ? 'text' : 'password'}
                   placeholder="Insira sua Senha"
@@ -85,7 +84,7 @@ export default function AdminLoginPage() {
                 </InputRightElement>
               </InputGroup>
 
-              <Button type="submit" bg={"#0066e8"} color="#fff">
+              <Button type="submit" bg={'#0066e8'} color="#fff">
                 <ImEnter /> &nbsp; Entrar
               </Button>
             </form>

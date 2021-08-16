@@ -7,33 +7,39 @@ import Router from 'next/router';
 import { Button, Flex, Input } from '@chakra-ui/react';
 import ToggleTheme from '../components/ToggleTheme';
 import { ImEnter } from 'react-icons/im';
-import Link from 'next/link'
-
+import firebase from '../lib/firebase';
+import swal from 'sweetalert';
 
 export default function LoginPage(props) {
   const { user, signout } = useAuth();
   const [roomCode, setRoomCode] = useState();
-
+  // console.log(user)
   async function handleJoinRoom(event) {
     event.preventDefault();
-    Router.push(`/room/${roomCode}`)
-
+    const dbRef = firebase.database().ref();
+    dbRef
+      .child('rooms')
+      .child(roomCode)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          Router.push(`/room/${roomCode}`);
+          // console.log(snapshot.val());
+        } else {
+          swal(
+            'Sala Inexistente!',
+            'O código da sala informado não existe, por favor tente novamente!',
+            'error',
+          );
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
-  
+
   return (
     <>
-      <Head>
-        <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (!document.cookie || !document.cookie.includes('user-auth')) {
-                window.location.href = "/"
-              }
-            `,
-          }}
-        />
-      </Head>
       <GeneralPagesConfig>
         <Flex position="absolute" mt={16} ml={16}>
           <ToggleTheme />
@@ -49,6 +55,7 @@ export default function LoginPage(props) {
             <div className="separator">Seja Bem Vindo</div>
             <form onSubmit={handleJoinRoom}>
               <Input
+                required
                 type="text"
                 name="codeRoom"
                 placeholder="Digite o Código da Sala"
@@ -56,9 +63,9 @@ export default function LoginPage(props) {
                   setRoomCode(event.target.value);
                 }}
                 mt="8px"
-                __placeholder__={"color: #000000"}
+                __placeholder__={'color: #000000'}
               />
-              <Button type="submit" bg={"#0066e8"} color="#fff">
+              <Button type="submit" bg={'#0066e8'} color="#fff">
                 <ImEnter /> &nbsp; Entrar na Sala
               </Button>
               <div className="registerLine">

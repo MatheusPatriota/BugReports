@@ -14,13 +14,15 @@ import {
   AiOutlineSearch,
 } from 'react-icons/ai';
 import firebase from '../../../lib/firebase';
+import Swal from 'sweetalert2'
+
 export default function Room() {
   const { user } = useAuth();
   const router = useRouter();
   //pid is the uid
   const { uid } = router.query;
   const { reports } = useRoom(uid);
-  
+
   async function handleStatusToUnderInvestigation(reportId) {
     console.log('marcado como em investigacao');
     await firebase.database().ref(`rooms/${uid}/reports/${reportId}`).update({
@@ -33,7 +35,23 @@ export default function Room() {
     });
   }
   async function handleRemoveReport(reportId) {
-    await firebase.database().ref(`rooms/${uid}/reports/${reportId}`).remove();
+    Swal.fire({
+      title: 'Quer mesmo excluir essa Ocorrência?',
+      showDenyButton: true,
+      confirmButtonText: `Remover`,
+      denyButtonText: `Cancelar`,
+    }).then(async (result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Removido com Sucesso!', '', 'success');
+        await firebase
+          .database()
+          .ref(`rooms/${uid}/reports/${reportId}`)
+          .remove();
+      } else if (result.isDenied) {
+        Swal.fire('Ocorrencia não foi Removida!', '', 'info');
+      }
+    });
   }
 
   return (

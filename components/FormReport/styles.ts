@@ -80,6 +80,19 @@ export const ReportStyles = styled.div`
             color: #06288f;
           }
         }
+        .userInfo{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .containerIcone{
+  
+            img{
+              width: 32px;
+              margin-right: 12px;
+              border-radius: 50%;
+            }
+          }
+        }
       }
     }
     .btnSend {
