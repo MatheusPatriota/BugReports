@@ -14,7 +14,8 @@ import {
   AiOutlineSearch,
 } from 'react-icons/ai';
 import firebase from '../../../lib/firebase';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import Head from 'next/head';
 
 export default function Room() {
   const { user } = useAuth();
@@ -56,6 +57,18 @@ export default function Room() {
 
   return (
     <div>
+      <Head>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!document.cookie || !document.cookie.includes('admin-auth')) {
+                window.location.href = "/admin"
+              }
+            `,
+          }}
+        />
+      </Head>
       <TopBar>
         <Link href={'.././dashboard'}>
           <Button bg={'#0066e8'} color="#fff">

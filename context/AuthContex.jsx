@@ -4,8 +4,10 @@ import firebase from '../lib/firebase';
 import cookie from 'js-cookie';
 import swal from 'sweetalert';
 
+//funcao para criar um contexto
 const AuthContext = createContext();
 
+//formato de saida de um usuario
 const formatUser = async (user) => ({
   uid: user.uid,
   email: user.email,
@@ -15,6 +17,11 @@ const formatUser = async (user) => ({
   photoUrl: user.photoURL,
 });
 
+/**
+ * funcao responsavel por fazer a autenticacao do usuario
+ * @param {*} param0 propiedades herdadas da pagina
+ * @returns retorna um provider para ser o padrao carregado pela pagina
+ */
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -24,25 +31,26 @@ export function AuthProvider({ children }) {
       // console.log(currentUser)
       const formatedUser = await formatUser(currentUser);
       setUser(formatedUser);
-      setSession(true);
-      return formatedUser;
+      // setSession(true);
+      // return formatedUser;
+      return true;
     } else {
       setUser(false);
-      setSession(false);
+      // setSession(false);
       return false;
     }
   };
 
-  const setSession = (session) => {
-    if (session) {
-      cookie.set('user-auth', session, {
-        expires: 1,
-      });
-    } else {
-      cookie.remove('user-auth');
-      // Router.push('./')
-    }
-  };
+  // const setSession = (session) => {
+  //   if (session) {
+  //     cookie.set('user-auth', session, {
+  //       expires: 1,
+  //     });
+  //   } else {
+  //     cookie.remove('user-auth');
+  //     // Router.push('./')
+  //   }
+  // };
 
   const signinWithGoogle = async () => {
     try {
@@ -53,6 +61,10 @@ export function AuthProvider({ children }) {
         .auth()
         .signInWithPopup(provider)
         .then((response) => {
+          cookie.set('user-auth', true, {
+            expires: 1,
+          });
+          cookie.remove('admin-auth');
           handleUser(response.user);
           Router.push('./room-code');
         })
@@ -64,14 +76,17 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const signinWithEmailAndpassword = async (email, password) => {
+  const signinWithEmailAndPassword = async (email, password) => {
     try {
       setLoading(true);
-
       await firebase
         .auth()
-        .signInWithEmailAndPassword(email, password)
+        .signinWithEmailAndPassword(email, password)
         .then((response) => {
+          cookie.set('admin-auth', true, {
+            expires: 1,
+          });
+          cookie.remove('user-auth');
           swal(
             'Login Bem sucessido',
             'Você será redirecionado para a Dashboard',
@@ -96,7 +111,7 @@ export function AuthProvider({ children }) {
               'Senha está incorretos, por favor tente novamente!',
               'error',
             );
-          }else{
+          } else {
             swal(
               'Usuário não Existe',
               'Esse usuário não existe na nossa base de dados!',
@@ -117,7 +132,7 @@ export function AuthProvider({ children }) {
         .signOut()
         .then(() => {
           setUser(false);
-          setSession(false);
+          // setSession(false);
           Router.push('./');
         });
     } finally {
@@ -136,7 +151,7 @@ export function AuthProvider({ children }) {
         user,
         loading,
         signinWithGoogle,
-        signinWithEmailAndpassword,
+        signinWithEmailAndPassword,
         signout,
       }}
     >

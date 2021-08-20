@@ -1,5 +1,4 @@
 import useAuth from '../../hooks/useAuth';
-import { Layout } from '../../components/Layout';
 import AsideLogin from '../../components/AsideLogin';
 import { GeneralPagesConfig } from '../../styles/generalPagesConfig';
 import {
@@ -15,7 +14,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { ImEnter } from 'react-icons/im';
 
 export default function AdminLoginPage() {
-  const { user, signinWithEmailAndpassword } = useAuth();
+  const { user, signinWithEmailAndPassword } = useAuth();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [show, setShow] = useState(false);
@@ -23,7 +22,7 @@ export default function AdminLoginPage() {
 
   const handleSigninEmailAndPassword = (event) => {
     event.preventDefault();
-    signinWithEmailAndpassword(email, password);
+    signinWithEmailAndPassword(email, password);
   };
 
   return (

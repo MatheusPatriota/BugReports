@@ -7,6 +7,8 @@ import { Button, Flex, Input } from '@chakra-ui/react';
 import ToggleTheme from '../../components/ToggleTheme';
 import { useRouter } from 'next/router';
 import swal from 'sweetalert';
+import Head from 'next/head';
+
 export default function NewRoom() {
   const { user } = useAuth();
   const [newRoom, setNewRoom] = useState('');
@@ -46,6 +48,18 @@ export default function NewRoom() {
 
   return (
     <GeneralPagesConfig>
+      <Head>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!document.cookie || !document.cookie.includes('admin-auth')) {
+                window.location.href = "/admin"
+              }
+            `,
+          }}
+        />
+      </Head>
       <Flex position="absolute" mt={16} ml={16}>
         <ToggleTheme />
       </Flex>

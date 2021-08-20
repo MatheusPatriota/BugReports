@@ -1,5 +1,4 @@
 import useAuth from '../hooks/useAuth';
-import { Layout } from '../components/Layout';
 import AsideLogin from '../components/AsideLogin';
 import withAuthModal from '../components/AuthModal';
 import { Box, Button, Flex } from '@chakra-ui/react';

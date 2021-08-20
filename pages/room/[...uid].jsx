@@ -13,6 +13,7 @@ import {
 import { BsCheckAll } from 'react-icons/bs';
 import { Box, Flex } from '@chakra-ui/layout';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 export default function Room() {
   const { user } = useAuth();
@@ -24,8 +25,7 @@ export default function Room() {
   console.log('usuario pagina de ocorrencais', user, uid);
 
   useEffect(() => {
-    if(user){
-
+    if (user) {
       setUserName(user.name);
       setUserAvatar(user.photoUrl);
     }
@@ -33,6 +33,18 @@ export default function Room() {
 
   return (
     <div>
+      <Head>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!document.cookie || !document.cookie.includes('user-auth')) {
+                window.location.href = "/"
+              }
+            `,
+          }}
+        />
+      </Head>
       <TopBar />
       <main>
         <RoomStyle>

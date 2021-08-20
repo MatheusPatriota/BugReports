@@ -5,10 +5,15 @@ import { Button } from '../Button';
 import { ReportStyles } from './styles';
 import firebase from '../../lib/firebase';
 import { useRouter } from 'next/router';
-import swal from 'sweetalert';
-import emailjs from 'emailjs-com';
+import { sendEmail } from '../../utils/utils';
 
+/**
+ * componente responsavel por modularizar nossa formulario de criacao de ocorrencia
+ * @param {*} props propiedades herdadas da pagina
+ * @returns retorna um componente pronto para uso com html css e js
+ */
 export function FormReport(props) {
+  //variaveis
   const [reportTitle, setReportTitle] = useState();
   const [reportText, setReportText] = useState();
   const { user } = useAuth();
@@ -17,6 +22,11 @@ export function FormReport(props) {
   // console.log('usuario pagina de from',user, uid)
   // console.log(props.avatar)
 
+  /**
+   * funcao responsavel por cadastrar requisicao no banco de dados
+   * @param {*} event captura os eventos que acontecem na pagina
+   * @returns retorna os estado resultante das interações (SUCCESS, FAILED)
+   */
   async function handleSendNewReport(event) {
     //gerando o timestamp da data atual
     let currentData = new Date().getTime() / 1000;
@@ -53,27 +63,8 @@ export function FormReport(props) {
       to_name: user.email,
     };
 
-    emailjs
-      .send(
-        'service_qk3iplp',
-        'template_bugReports',
-        template_params,
-        'user_JPO0dwMhpoUMtAJlAk4m8',
-      )
-      .then(
-        function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-          swal(
-            'Ocorrencia cadastrada com Sucesso',
-            'Enviamos um email confirmando Sua nova Ocorrência =D',
-            'success',
-          );
-        },
-        function (error) {
-          console.log('FAILED...', error);
-          swal('Erro ao enviar Email', `${error.message}`, 'error');
-        },
-      );
+    //chamando a funcao de envio de email
+    sendEmail(template_params);
   }
 
   return (

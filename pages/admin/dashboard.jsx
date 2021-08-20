@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { BsTrash } from 'react-icons/bs';
 import Swal from 'sweetalert2';
 import firebase from '../../lib/firebase';
+import Head from 'next/head'
 
 export default function Room() {
   const { user } = useAuth();
@@ -34,6 +35,18 @@ export default function Room() {
 
   return (
     <div>
+      <Head>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!document.cookie || !document.cookie.includes('admin-auth')) {
+                window.location.href = "/admin"
+              }
+            `,
+          }}
+        />
+      </Head>
       <TopBar>
         <Link href={'./create-room'}>
           <Button bg={'#0066e8'} color="#fff">

@@ -1,5 +1,9 @@
 import { Aside } from "./styles";
 
+/**
+ * componente responsavel por modularizar nossa side bar
+ * @returns retorna um component formatado com html css e js
+ */
 function AsideLogin() {
   return (
     <>

@@ -57,6 +57,11 @@ const AuthModal = ({ isOpen, onClose }) => {
   );
 };
 
+/**
+ * funcao responsavel por envolver nossa pagina em um Modal
+ * @param {*} Component propriedades herdadas das paginas
+ * @returns retorna um modal com as informacoes definidas
+ */
 const withAuthModal = (Component) => (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 

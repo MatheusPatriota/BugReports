@@ -40,6 +40,18 @@ export default function LoginPage(props) {
 
   return (
     <>
+      <Head>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!document.cookie || !document.cookie.includes('user-auth')) {
+                window.location.href = "/"
+              }
+            `,
+          }}
+        />
+      </Head>
       <GeneralPagesConfig>
         <Flex position="absolute" mt={16} ml={16}>
           <ToggleTheme />

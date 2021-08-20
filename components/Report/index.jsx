@@ -1,5 +1,11 @@
 import { ReportStyles } from './styles';
 import { BiUser } from 'react-icons/bi';
+
+/**
+ * componente responsavel por padrozinar e exibir cada Ocorrencia
+ * @param {*} props propiedades herdadas da pagina
+ * @returns retorna um componente pronto para uso com html css e js
+ */
 export function Report(props) {
   return (
     <ReportStyles className="">

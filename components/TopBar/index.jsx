@@ -10,6 +10,11 @@ import { RoomCode } from '../RoomCode';
 import ToggleTheme from '../ToggleTheme';
 import {useRouter} from 'next/router';
 
+/**
+ * funcao reponsavel por criar o componente TopBar, com html css e js
+ * @param {*} props propiedades herdadas da pagina
+ * @returns retorna uma topbar para ser utilizada em outros lugares da aplicacao
+ */
 function TopBar(props) {
   const bg = useColorModeValue('#FFFFFF', '#1A202C');
   const color = useColorModeValue('#1A202C', '#EDEEEE');

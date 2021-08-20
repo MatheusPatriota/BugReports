@@ -36,13 +36,27 @@ $ git clone https://github.com/MatheusPatriota/BugReports.git
 $ cd BugReports
 ```
 
+Será necessário um projeto no firebase para poder usar localmente, além disso você deverá criar o arquivo .env.local com as variaveis de ambiente
+
+```bash
+
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_API_KEY=
+
+```
+
 Para iniciá-lo, siga os passos abaixo:
 ```bash
 # Instalar as dependências
 $ yarn
 
 # Iniciar o projeto
-$ yarn start
+$ yarn dev
 ```
 O app estará disponível no seu browser pelo endereço http://localhost:3000.
 
@@ -56,4 +70,4 @@ produtos, classificando eles por ordem de entrada, os estados da aplic
 
 Este é um projeto desenvolvido como estudo das tecnologias citadas acima.
 
-#### 🚀 O mundo é gigantesco e estamos apenas na linha de partida.
+#### 🚀 Um passo de Cada Vez, e quando se der conta, terá chegado lá, Fé!. 🧑🏼‍💻🖖🏻🙏🏼
