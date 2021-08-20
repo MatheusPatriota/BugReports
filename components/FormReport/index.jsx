@@ -6,6 +6,7 @@ import { ReportStyles } from './styles';
 import firebase from '../../lib/firebase';
 import { useRouter } from 'next/router';
 import swal from 'sweetalert';
+import emailjs from 'emailjs-com';
 
 export function FormReport(props) {
   const [reportTitle, setReportTitle] = useState();
@@ -45,27 +46,34 @@ export function FormReport(props) {
     setReportText('');
     setReportTitle('');
 
-    fetch('api/sendEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: user.name,
-        email: user.email,
-        message: 'Sua Ocorrência foi cadastrada com sucesso!',
-      }),
-    })
-      .then((response) => {
-        swal(
-          'Ocorrencia cadastrada com Sucesso',
-          'Enviamos um email confirmando Sua nova Ocorrência =D',
-          'success',
-        );
-      })
-      .catch((err) => {
-        swal('Erro ao enviar Email', `${err.message}`, 'error');
-      });
+    let template_params = {
+      from_name: 'contato.bugreports@gmail.com:',
+      message:
+        'Sua ocorrência foi cadastrada com Sucesso, fique ligado no seu email para novas atualizações 🧑🏼‍💻🧑🏻‍💻👩🏻‍💻',
+      to_name: user.email,
+    };
+
+    emailjs
+      .send(
+        'service_qk3iplp',
+        'template_bugReports',
+        template_params,
+        'user_JPO0dwMhpoUMtAJlAk4m8',
+      )
+      .then(
+        function (response) {
+          console.log('SUCCESS!', response.status, response.text);
+          swal(
+            'Ocorrencia cadastrada com Sucesso',
+            'Enviamos um email confirmando Sua nova Ocorrência =D',
+            'success',
+          );
+        },
+        function (error) {
+          console.log('FAILED...', error);
+          swal('Erro ao enviar Email', `${error.message}`, 'error');
+        },
+      );
   }
 
   return (
