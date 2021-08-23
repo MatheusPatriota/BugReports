@@ -4,8 +4,7 @@ export const RoomCodeStyles = styled.button`
   height: 40px;
   border-radius: 8px;
   overflow: hidden;
-
-  border: 1px solid #0066e8;
+  color: white;
   cursor: pointer;
 
   display: flex;

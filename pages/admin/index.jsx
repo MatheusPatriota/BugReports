@@ -13,6 +13,10 @@ import { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { ImEnter } from 'react-icons/im';
 
+/**
+ * funcao responsavel por montar a pagina de login do administrador
+ * @returns uma pagina formatada com html css e js
+ */
 export default function AdminLoginPage() {
   const { user, signinWithEmailAndPassword } = useAuth();
   const [password, setPassword] = useState();
@@ -20,6 +24,10 @@ export default function AdminLoginPage() {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
+  /**
+   * funcao responsavel por mandar as informacoes fornecidas pelo usuario para a autenticacao do banco de dados
+   * @param {*} event captura os eventos do formulario
+   */
   const handleSigninEmailAndPassword = (event) => {
     event.preventDefault();
     signinWithEmailAndPassword(email, password);

@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import firebase from '../lib/firebase';
 import useAuth from './useAuth';
 
+//tipagem 
 type ReportType = {
   id: string;
   author: {
     name: string;
+    email: string;
     photoUrl?: string;
   };
   title: string;
@@ -20,6 +22,7 @@ type FirebaseReports = Record<
   {
     author: {
       name: string;
+      email: string;
     };
     title: string;
     content: string;
@@ -43,6 +46,11 @@ type RoomType = {
   title: string;
 };
 
+/**
+ * funcao responsavel por estruturar o esqueleto das salas
+ * @param roomId id da sala de projeto selecionado
+ * @returns retorna as funcoes criadas
+ */
 export function useRoom(roomId?: string) {
   const { user } = useAuth();
   const [reports, setReports] = useState<ReportType[]>([]);
@@ -78,7 +86,9 @@ export function useRoom(roomId?: string) {
         roomRef.off('value');
       };
     }
-
+    /**
+     * funcao responsavel por listar todas as salas do banco de dados
+     */
     getAllRooms.on('value', (room) => {
       const dataBaseRooms = room.val();
       const firebaseReports: FirebaseRooms = dataBaseRooms ?? {};

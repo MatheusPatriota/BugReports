@@ -11,11 +11,19 @@ import Swal from 'sweetalert2';
 import firebase from '../../lib/firebase';
 import Head from 'next/head'
 
+/**
+ * funcao responsavel por criar a tela da dashboard do admin
+ * @returns pagina formatada com html css e js
+ */
 export default function Room() {
   const { user } = useAuth();
   const router = useRouter();
   const { roomInfo } = useRoom();
 
+  /**
+   * funcao responsavel por excluir uma sala
+   * @param {*} roomId id da sala selecionada
+   */
   async function handleRemoveRoom(roomId) {
     Swal.fire({
       title: 'Quer mesmo excluir essa Sala?',

@@ -4,6 +4,12 @@ import withAuthModal from '../components/AuthModal';
 import { Box, Button, Flex } from '@chakra-ui/react';
 import { GeneralPagesConfig } from '../styles/generalPagesConfig';
 import ToggleTheme from '../components/ToggleTheme';
+
+/**
+ * funcao responsavel por criar a pagina de login do administrador
+ * @param {*} param0 parametro opcional do modal
+ * @returns uma pagina formatada com html css e js
+ */
 function Home({ openAuthModal }) {
   const { user, signinWithGoogle } = useAuth();
   return (

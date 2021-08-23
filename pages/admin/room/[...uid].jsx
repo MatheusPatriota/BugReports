@@ -16,6 +16,7 @@ import {
 import firebase from '../../../lib/firebase';
 import Swal from 'sweetalert2';
 import Head from 'next/head';
+import { sendEmail } from '../../../utils/utils';
 
 export default function Room() {
   const { user } = useAuth();
@@ -24,18 +25,37 @@ export default function Room() {
   const { uid } = router.query;
   const { reports } = useRoom(uid);
 
-  async function handleStatusToUnderInvestigation(reportId) {
-    console.log('marcado como em investigacao');
+  async function handleStatusToUnderInvestigation(reportId, authorEmail) {
     await firebase.database().ref(`rooms/${uid}/reports/${reportId}`).update({
       underInvestigation: true,
+      isSolved: false,
     });
+
+    let template_params = {
+      from_name: 'contato.bugreports@gmail.com:',
+      message:
+        'Sua ocorrência está sendo investigada por nosso time de devs, fique ligado no seu email para novas atualizações 🧑🏼‍💻🧑🏻‍💻👩🏻‍💻',
+      to_name: authorEmail,
+    };
+
+    sendEmail(template_params);
   }
-  async function handleStatusToSolved(reportId) {
+  async function handleStatusToSolved(reportId, authorEmail) {
     await firebase.database().ref(`rooms/${uid}/reports/${reportId}`).update({
       isSolved: true,
+      underInvestigation: false,
     });
+
+    let template_params = {
+      from_name: 'contato.bugreports@gmail.com:',
+      message:
+        'Sua ocorrência foi Resolvida por nosso time de devs, Agradecemos Sua Participação 🧑🏼‍💻🧑🏻‍💻👩🏻‍💻',
+      to_name: authorEmail,
+    };
+
+    sendEmail(template_params);
   }
-  async function handleRemoveReport(reportId) {
+  async function handleRemoveReport(reportId, authorEmail) {
     Swal.fire({
       title: 'Quer mesmo excluir essa Ocorrência?',
       showDenyButton: true,
@@ -53,6 +73,15 @@ export default function Room() {
         Swal.fire('Ocorrencia não foi Removida!', '', 'info');
       }
     });
+
+    let template_params = {
+      from_name: 'contato.bugreports@gmail.com:',
+      message:
+        'Sua ocorrência foi Removida por nosso time de devs, Agradecemos Sua Participação 🧑🏼‍💻🧑🏻‍💻👩🏻‍💻',
+      to_name: authorEmail,
+    };
+
+    sendEmail(template_params);
   }
 
   return (
@@ -87,32 +116,42 @@ export default function Room() {
                     title={report.title}
                     content={report.content}
                     author={report.author}
-                    isUnderInvestigation={report.underInvestigation}
+                    underInvestigation={report.underInvestigation}
                     isSolved={report.isSolved}
                   >
                     <Box>
                       <Flex className="BoxFooterIcons">
                         <button
+                          className="excluir"
                           type="button"
                           aria-label="Excluir Ocorrência"
-                          onClick={() => handleRemoveReport(report.id)}
+                          onClick={() =>
+                            handleRemoveReport(report.id, report.author.email)
+                          }
                           title="Excluir Ocorrência"
                         >
                           <BsTrash />
                         </button>
                         <button
+                          className="concluida"
                           type="button"
                           aria-label="Marcar como concluido"
-                          onClick={() => handleStatusToSolved(report.id)}
+                          onClick={() =>
+                            handleStatusToSolved(report.id, report.author.email)
+                          }
                           title="Marcar como concluido"
                         >
                           <AiOutlineCheckCircle />
                         </button>
                         <button
+                          className="emInvestigacao"
                           type="button"
                           aria-label="Marcar como Em Investigação"
                           onClick={() =>
-                            handleStatusToUnderInvestigation(report.id)
+                            handleStatusToUnderInvestigation(
+                              report.id,
+                              report.author.email,
+                            )
                           }
                           title="Marcar como Em Investigação"
                         >

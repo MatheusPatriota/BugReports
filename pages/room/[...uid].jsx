@@ -63,7 +63,7 @@ export default function Room() {
                     title={report.title}
                     content={report.content}
                     author={report.author}
-                    isUnderInvestigation={report.underInvestigation}
+                    underInvestigation={report.underInvestigation}
                     isSolved={report.isSolved}
                   >
                     <Flex className="BoxFooterIcons">

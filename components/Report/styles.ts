@@ -11,6 +11,18 @@ export const ReportStyles = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   justify-content: center;
+
+  &.underInvestigation {
+    filter: drop-shadow(2px 2px 4px rgba(151,123,24,1));
+    border: 1px solid rgba(151,123,24,1);
+  }
+
+  &.isSolved {
+    filter: drop-shadow(2px 2px 4px green);
+    border: 1px solid rgba(50,238,50,1);
+    
+  }
+
   .tituloOcorrencia {
     font-size: 17px;
     font-weight: 600;
@@ -78,27 +90,35 @@ export const ReportStyles = styled.div`
       }
     }
 
-    .BoxFooterIcons{
-      button{
-        color: rgba(3,3,3,1);
+    .BoxFooterIcons {
+      button {
+        color: rgba(3, 3, 3, 1);
         font-size: 22px;
         padding: 10px;
       }
-      
-      span{
-        svg{
+
+      span {
+        svg {
           margin-top: 4px;
         }
         display: flex;
-        color: rgba(3,3,3,1);
+        color: rgba(3, 3, 3, 1);
         font-size: 18px;
         padding: 10px;
         gap: 8px;
       }
-      .ocorrenciaRecebida{
+      .ocorrenciaRecebida {
         color: #0066e8;
         cursor: default;
-        
+      }
+      .concluida{
+        color: green;
+      }
+      .emInvestigacao{
+        color: orange;
+      }
+      .excluir{
+        color: red;
       }
     }
   }

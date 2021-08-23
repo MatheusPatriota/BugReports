@@ -3,18 +3,26 @@
   <img alt="BugReports" src="public/logo.png" width="160px">
 </p>
 
-
+<h1>
+Fluxo do Usuário
+</h1>
 
 <h1 align="center">
-    <img alt="BugReports" src="screenshots/tela_inicial.png" width="920px" />
+    <img alt="BugReports" src="screenshots/user_flow.gif" width="920px" />
+</h1>
+
+<h1>
+Fluxo do Administrador
 </h1>
 <h1 align="center">
-    <img alt="BugReports" src="screenshots/user_room.png" width="920px" />
+    <img alt="BugReports" src="screenshots/admin_flow.gif" width="920px" />
 </h1>
 
 <br>
 
 
+## 📓 Confira a Documentação do Projeto
+<a href="https://docs.google.com/document/d/1GKSS9r18zrKPTzq4aKlp8BslwZSWDDj-qdxK8AM0cMs/edit?usp=sharing">Link para a Documentação</a>
 ## 🧑🏼‍💻 Projeto Prototipado com o Figma
 <a href="https://www.figma.com/file/4S87TK0lfzorscyX6GiRKp/Projeto-FInal-Desenvolvimento-Web">Link do Projeto no Figma</a>
 

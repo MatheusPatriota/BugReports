@@ -14,6 +14,11 @@ export default function NewRoom() {
   const [newRoom, setNewRoom] = useState('');
   const router = useRouter();
 
+  /**
+   * funcao responsavel por criar uma nova sala
+   * @param {*} event captura eventos do formulario
+   * @returns componente com html css e js
+   */
   async function handleCreateRoom(event) {
     event.preventDefault();
     if (newRoom.trim() === '') {
@@ -22,7 +27,7 @@ export default function NewRoom() {
 
     const roomRef = firebase.database().ref('rooms');
 
-    const firebaseRoom = await roomRef
+    await roomRef
       .push({
         title: newRoom,
         authorEmail: user.email,

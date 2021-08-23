@@ -10,10 +10,19 @@ import { ImEnter } from 'react-icons/im';
 import firebase from '../lib/firebase';
 import swal from 'sweetalert';
 
-export default function LoginPage(props) {
+/**
+ * funcao responsavel por montar a pagina de escolha de sala para o usuario
+ * @param {*} props propiedades herdadas da pagina
+ * @returns pagina formatada com html css e js
+ */
+export default function RoomCode(props) {
   const { user, signout } = useAuth();
   const [roomCode, setRoomCode] = useState();
   // console.log(user)
+  /**
+   * funcao responsavel por guiar o usuario ate a pagina da sala do projeto
+   * @param {*} event caputra os eventos da pagina
+   */
   async function handleJoinRoom(event) {
     event.preventDefault();
     const dbRef = firebase.database().ref();

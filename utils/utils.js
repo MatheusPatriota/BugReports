@@ -18,7 +18,7 @@ function sendEmail(template_params){
       console.log('SUCCESS!', response.status, response.text);
       swal(
         'Ocorrencia cadastrada com Sucesso',
-        'Enviamos um email confirmando Sua nova Ocorrência =D',
+        'Enviamos um email de confirmação =D',
         'success',
       );
     },

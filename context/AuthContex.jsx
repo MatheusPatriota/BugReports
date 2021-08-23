@@ -26,6 +26,11 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  /**
+   * funcao responsavel por retornar as informacoes do usuario formatadas para a definicao acima
+   * @param {*} currentUser informacoes do usuario que esta fazendo a requisicao
+   * @returns boolean para saber se existe usuario conectado ou nao
+   */
   const handleUser = async (currentUser) => {
     if (currentUser) {
       // console.log(currentUser)
@@ -52,6 +57,9 @@ export function AuthProvider({ children }) {
   //   }
   // };
 
+  /**
+   * funcao responsavel por chamar a API do google para realizar Login
+   */
   const signinWithGoogle = async () => {
     try {
       const provider = await new firebase.auth.GoogleAuthProvider();
@@ -76,12 +84,17 @@ export function AuthProvider({ children }) {
     }
   };
 
+  /**
+   * funcao responsavel por realizar autenticacao de login do administrador do sistema
+   * @param {*} email email do usuario administrador
+   * @param {*} password senha do usuario administrador
+   */
   const signinWithEmailAndPassword = async (email, password) => {
     try {
       setLoading(true);
       await firebase
         .auth()
-        .signinWithEmailAndPassword(email, password)
+        .signInWithEmailAndPassword(email, password)
         .then((response) => {
           cookie.set('admin-auth', true, {
             expires: 1,
@@ -125,6 +138,11 @@ export function AuthProvider({ children }) {
       setLoading(false);
     }
   };
+
+  /**
+   * funcao responsavel por desconectar o usuário logado
+   * @returns boolean confirmando se o usuario foi desconectado ou nao
+   */
   const signout = async () => {
     try {
       return await firebase
@@ -144,7 +162,7 @@ export function AuthProvider({ children }) {
     const unsubscribe = firebase.auth().onIdTokenChanged(handleUser);
     return () => unsubscribe();
   }, []);
-
+  
   return (
     <AuthContext.Provider
       value={{

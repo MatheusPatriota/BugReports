@@ -45,6 +45,7 @@ export function FormReport(props) {
       content: reportText,
       author: {
         name: user.name,
+        email: user.email,
       },
       isSolved: false,
       //data é armazenada em timestamp
