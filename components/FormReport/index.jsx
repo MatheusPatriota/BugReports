@@ -78,20 +78,24 @@ export function FormReport(props) {
         <form onSubmit={handleSendNewReport} id="form">
           <input
             type="text"
+            required
             placeholder="Titulo da Ocorrência"
             className="tituloOcorrencia"
             onChange={(event) => {
               setReportTitle(event.target.value);
             }}
             value={reportTitle}
+            data-testid="title"
           />
           <textarea
+            required
             name="Descrição da ocorrência"
             placeholder="Descreva sua Ocorrência"
             onChange={(event) => {
               setReportText(event.target.value);
             }}
             value={reportText}
+            data-testid="description"
           />
           <div className="formFooter">
             {/* <Button className="btnVideo">Anexar seu Vídeo</Button> */}
@@ -106,7 +110,7 @@ export function FormReport(props) {
               <span>{props.name}</span>
             </div>
             <div className="btnSend">
-              <Button type="submit">Enviar Ocorrência</Button>
+              <Button type="submit"  data-testid="add-report-button">Enviar Ocorrência</Button>
             </div>
           </div>
         </form>
