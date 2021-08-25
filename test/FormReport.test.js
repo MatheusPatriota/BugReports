@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { signinWithEmailAndPassword } from '../context/AuthContex';
+import { signinWithEmailAndPassword } from './functions.teste';
 
 describe('Teste de Login Invalido', () => {
   jest.mock('../context/AuthContex',async () => {
