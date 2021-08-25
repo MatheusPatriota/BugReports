@@ -78,4 +78,10 @@ produtos, classificando eles por ordem de entrada, os estados da aplic
 
 Este é um projeto desenvolvido como estudo das tecnologias citadas acima.
 
+## 👽 JSDOCS
+```bash
+para ver a documentacao do jsdocs abra a pasta OUT e abra o index.html
+```
+
+
 #### 🚀 Um passo de Cada Vez, e quando se der conta, terá chegado lá, Fé!. 🧑🏼‍💻🖖🏻🙏🏼
