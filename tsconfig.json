@@ -12,8 +12,9 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "context/AuthContex.jsx", "pages/_app.jsx", "components/Layout/index.jsx", "components/AuthModal/index.jsx", "pages/index.jsx", "pages/adminn/index.jsx", "components/Report/index.jsx", "components/FormReport/index.jsx", "pages/api/hello.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

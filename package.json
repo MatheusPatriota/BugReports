@@ -1,54 +1,24 @@
 {
-  "name": "bug-reports-v2",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "jest"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^1.0.14",
-    "@chakra-ui/react": "^1.6.5",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "@types/styled-components": "^5.1.11",
-    "emailjs-com": "^3.2.0",
-    "firebase": "^8.8.1",
-    "framer-motion": "^4",
-    "install": "^0.13.0",
-    "js-cookie": "^3.0.0",
-    "next": "11.0.1",
-    "nodemailer": "^6.6.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-icons": "^4.2.0",
-    "styled-components": "^5.3.0",
-    "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.1.2"
+    "next": "12.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@types/react": "17.0.15",
-    "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/parser": "^4.29.0",
-    "babel-jest": "^27.0.6",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-next": "11.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "jest": "^27.0.6",
-    "jsdoc": "^3.6.7",
-    "prettier": "^2.3.2",
-    "react-test-renderer": "^17.0.2",
-    "typescript": "4.3.5"
+    "@types/node": "18.6.3",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.6",
+    "eslint": "8.21.0",
+    "eslint-config-next": "12.2.3",
+    "typescript": "4.7.4"
   }
 }

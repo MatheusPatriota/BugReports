@@ -1,87 +1,34 @@
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-<p align="center">
-  <img alt="BugReports" src="public/logo.png" width="160px">
-</p>
+## Getting Started
 
-<h1>
-Fluxo do Usuário
-</h1>
-
-<h1 align="center">
-    <img alt="BugReports" src="screenshots/user_flow.gif" width="920px" />
-</h1>
-
-<h1>
-Fluxo do Administrador
-</h1>
-<h1 align="center">
-    <img alt="BugReports" src="screenshots/admin_flow.gif" width="920px" />
-</h1>
-
-<br>
-
-
-## 📓 Confira a Documentação do Projeto
-<a href="https://docs.google.com/document/d/1GKSS9r18zrKPTzq4aKlp8BslwZSWDDj-qdxK8AM0cMs/edit?usp=sharing">Link para a Documentação</a>
-## 🧑🏼‍💻 Projeto Prototipado com o Figma
-<a href="https://www.figma.com/file/4S87TK0lfzorscyX6GiRKp/Projeto-FInal-Desenvolvimento-Web">Link do Projeto no Figma</a>
-
-## 🧪 Tecnologias
-
-Esse projeto foi desenvolvido com as seguintes tecnologias:
-- [NextJS](https://nextjs.org/)
-- [React](https://reactjs.org)
-- [Styled Components](https://styled-components.com/)
-- [Firebase](https://firebase.google.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-
-## 🚀 Como executar
-
-Clone o projeto e acesse a pasta do mesmo.
+First, run the development server:
 
 ```bash
-$ git clone https://github.com/MatheusPatriota/BugReports.git
-$ cd BugReports
+npm run dev
+# or
+yarn dev
 ```
 
-Será necessário um projeto no firebase para poder usar localmente, além disso você deverá criar o arquivo .env.local com as variaveis de ambiente
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_DATABASE_URL=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_API_KEY=
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-```
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-Para iniciá-lo, siga os passos abaixo:
-```bash
-# Instalar as dependências
-$ yarn
+## Learn More
 
-# Iniciar o projeto
-$ yarn dev
-```
-O app estará disponível no seu browser pelo endereço http://localhost:3000.
+To learn more about Next.js, take a look at the following resources:
 
-Lembrando que será necessário criar uma conta no [Firebase](https://firebase.google.com/) e um projeto para disponibilizar um Realtime Database caso queira editar o projeto.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 💻 Projeto
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-BugReports é perfeito para empresas que querem ter controle sobre ocorrências bugs em seus
-produtos, classificando eles por ordem de entrada, os estados da aplicação são: "Recebido","Em análise" e "Concluído".
+## Deploy on Vercel
 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Este é um projeto desenvolvido como estudo das tecnologias citadas acima.
-
-## 👽 JSDOCS
-```bash
-para ver a documentacao do jsdocs abra a pasta OUT e abra o index.html
-```
-
-
-#### 🚀 Um passo de Cada Vez, e quando se der conta, terá chegado lá, Fé!. 🧑🏼‍💻🖖🏻🙏🏼
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
