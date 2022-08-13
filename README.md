@@ -8,14 +8,14 @@ Fluxo do Usuário
 </h1>
 
 <h1 align="center">
-    <img alt="BugReports" src="screenshots/user_flow.gif" width="920px" />
+    <img alt="BugReports" src="screenshots/user_flow.gif" width="700px" />
 </h1>
 
 <h1>
 Fluxo do Administrador
 </h1>
 <h1 align="center">
-    <img alt="BugReports" src="screenshots/admin_flow.gif" width="920px" />
+    <img alt="BugReports" src="screenshots/admin_flow.gif" width="700px" />
 </h1>
 
 <br>
